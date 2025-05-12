@@ -1,0 +1,129 @@
+SUNDAY
+approx. 14:00 CDT
+
+WHERE DO WE GO WITH THIS?
+
+To develop a generic card game engine where a card game can be created and put into it.
+
+WHAT ARE YOU ACTUALLY TRYING TO DO AND WHY?
+
+I wanna make a Dice Throne simulator, but also I want to make a digital version of some of the games by Unstable Games, such as "Here to Slay".
+
+WHY?
+
+I want to demonstrate, empirically, why it's a bad idea to simply ignore one of the core mechanics of the game, namely, that one of the win conditions is assembling a full party!
+
+HOW?
+
+Here's the plan:
+	-adadpt the turn-tracking mechanism that was developed in the Blackjack engine developed a few weeks ago
+	-Figure out how to store cards in some kind of database format (json? castledb?)
+		-OTHER TOOL: card editor program??
+			-card properties
+				-card name
+				-card type
+				-card text
+				-card rules/mechanics/effects
+				-card art
+
+Let's start small.  How do you adapt "Here to Slay"?
+
+no.  Better question: how is the game state managed in the Blackjack example?
+
+ANSWER:  There are four states, "Betting", "Player_turn", "Dealer_turn", and "Game_over".   
+
+Q: So a method of managing states was necessary to make Blackjack work.  How do you adapt that to the game "Here to Slay"?
+
+A: You need to break down mechanically what the game states are, and you can only do that by considering the rules of the game. 
+
+Q: WHAT DO THE RULES SAY?
+A: Let's review
+	OBJECTIVE: Defeat 3 monsters | OR | assemble a *full party*.
+
+-----------------------
+
+GAME PROCEDURE
+
+SETUP
+
+all players choose a party leader (order in which players are allowed to choose is random)
+
+each player is dealt 5 cards from the main deck
+
+the monster card deck is shuffled, 3 are drawn and placed in the middle of the play area.
+
+begin each players first turn, starting with the player who picked his or her party leader first.
+
+==TURN PROCESS==
+
+-Player receives 3 action points
+
+Player chooses from the following options:
+	-(1 AP) draw a card from the main deck
+
+	-(1 AP) attempt to play a hero, item, or magic card 
+		==CHALLENGES CHECK==
+		-All other players are given a chance to play a challenge card (starting with the player whose turn is after the current player)
+			-If another player challenges the card, challenge commences and rolls are made (any players that already decided whether to challenge will be given another opportunity to challenge after this resolves).
+				==ROLL MODIFIERS CHECK==
+				-All players in sequence are prompted with the opportunity to play a modifier (starting with the player whose turn is after the current player) 
+					-if a player plays a modifier, all players in sequence will be prompted again with an opportunity to play a modifier (starting with the player after the player who just played a modifier)
+				-once all players have opted not to play a modifier, the challenge is resolved.
+				
+				-if challenger's final roll result is equal to or higher than the opponents, the challenge is successful, and the hero/item/magic card played is discarded and has no effect.
+		-If no challenges were successful, the effect of the card happens
+		-if *hero*, player may also roll to use that hero's ability
+
+	-(1 AP) roll two dice to activate an effect of a hero card in your party (See "ROLL MODIFIERS CHECK" above for resolving a roll)
+	-(2 AP) ATTACK a monster card (Can only choose this for a monster for which your party meets the requirements)
+		-Roll to see outcome of the attack (see "ROLL MODIFIERS CHECK" above for resolving a roll)
+		-If attack successfully SLAYs a monster, check if its' the 3rd monster the player has slain.  If so, END GAME (player wins!)
+	-(3 AP) DISCARD every card in your hand (if you have any) and DRAW five new cards
+
+Player repeatedly chooses actions until:
+	-No more AP
+	-Chooses not to use an action
+
+At the end of the turn, check the player's party status.  If it's complete, END GAME (player wins!)
+
+-----------------------
+15:30 CDT
+
+Alright, so that's simple enough to outline.  How is that modelled in Godot?
+
+-----------------------
+
+17:04 CDT
+Better question, what does the UI look like?
+
+---
+
+17:30 CDT
+Did a mock-up of the player area in ms paint, "Player UI.png".  
+
+---
+
+17:45 CDT
+How should the game seem...
+
+There needs to be a way to construct a scene
+
+IMAGINE JUST A 2-PLAYER GAME, WHERE BOTH PLAYERS BOARDS WILL FIT IN ONE VIEW
+
+---
+
+21:08 CDT
+
+After staring at an attempt at putting together a "player UI" scene, I realize I haven't figured out *what* exactly it is in the context of the game at large.  So here we go:
+player_ui.tscn
+
+WHAT?
+A UI which displays the board for a specific player
+
+HOW?
+The PlayerUI on creation is given reference to a "player" object by the game manager scene, which holds all the properties of the player
+
+SO WHAT WE REALLY NEED IS THE "GAME" SCENE
+
+21:18
+Time's been squandered, and the day is over.  Will have to pick up at a future time

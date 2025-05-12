@@ -1,0 +1,7 @@
+WHAT?
+
+Another crack at hashing out details of how a card game in Godot would work.
+
+WHY?
+
+I want to simulate certain tabletop games, but need to get good at the basics through repetitions.☺☻
