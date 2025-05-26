@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://4s6065i6c1y7"]
+[gd_scene load_steps=5 format=3 uid="uid://4s6065i6c1y7"]
+
+[ext_resource type="Script" uid="uid://bm23jtbtqwvas" path="res://scenes/cardgamecomponents/player.gd" id="1_8xyra"]
+[ext_resource type="PackedScene" uid="uid://jiw5bbf3ycjv" path="res://scenes/cardgamecomponents/card.tscn" id="1_ld7w0"]
+[ext_resource type="PackedScene" uid="uid://4gib0fj53if6" path="res://scenes/cardgamecomponents/monster_card.tscn" id="2_77bc7"]
+[ext_resource type="PackedScene" uid="uid://bqixxb4n813xd" path="res://scenes/cardgamecomponents/party_leader_card.tscn" id="2_stje5"]
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -7,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8xyra")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -37,21 +43,69 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -4.0
+offset_top = -244.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PartyMembers" type="HBoxContainer" parent="PlayerBoard"]
 layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SamplePtyMbr1" parent="PlayerBoard/PartyMembers" instance=ExtResource("1_ld7w0")]
+layout_mode = 2
+
+[node name="SamplePtyMbr2" parent="PlayerBoard/PartyMembers" instance=ExtResource("1_ld7w0")]
+layout_mode = 2
+
+[node name="SamplePtyMbr3" parent="PlayerBoard/PartyMembers" instance=ExtResource("1_ld7w0")]
+layout_mode = 2
 
 [node name="OtherAreas" type="HBoxContainer" parent="PlayerBoard"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="PlayerHand" type="HBoxContainer" parent="PlayerBoard/OtherAreas"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SamplePtyMbr1" parent="PlayerBoard/OtherAreas/PlayerHand" instance=ExtResource("1_ld7w0")]
+layout_mode = 2
+
+[node name="SamplePtyMbr2" parent="PlayerBoard/OtherAreas/PlayerHand" instance=ExtResource("1_ld7w0")]
+layout_mode = 2
+
+[node name="SamplePtyMbr3" parent="PlayerBoard/OtherAreas/PlayerHand" instance=ExtResource("1_ld7w0")]
+layout_mode = 2
+
+[node name="PartyLeader" type="HBoxContainer" parent="PlayerBoard/OtherAreas"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="LdrSpacerL" type="Control" parent="PlayerBoard/OtherAreas/PartyLeader"]
+custom_minimum_size = Vector2(140, 193)
+layout_mode = 2
+
+[node name="PartyLeaderCard" parent="PlayerBoard/OtherAreas/PartyLeader" instance=ExtResource("2_stje5")]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="LdrSpacerR" type="Control" parent="PlayerBoard/OtherAreas/PartyLeader"]
+custom_minimum_size = Vector2(140, 193)
 layout_mode = 2
 
 [node name="DefeatedMonsters" type="HBoxContainer" parent="PlayerBoard/OtherAreas"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 
-[node name="PartyLeader" type="Control" parent="PlayerBoard/OtherAreas"]
+[node name="MonsterCard" parent="PlayerBoard/OtherAreas/DefeatedMonsters" instance=ExtResource("2_77bc7")]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="MonsterCard2" parent="PlayerBoard/OtherAreas/DefeatedMonsters" instance=ExtResource("2_77bc7")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4

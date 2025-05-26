@@ -1,0 +1,29 @@
+WHERE TO GO
+
+Working on a decent mock-up of the player UI, so to have something to work with.
+
+
+14:36 CDT
+
+Some time put into working on it, got a half-way decent mock-up of a player UI.
+Next:
+	-Tie each instance of PlayerUI with an instance of the underlying script
+	
+17:23 CDT
+
+Took a break around 15:00, got back to it...except...
+
+20:18 CDT
+
+...I didn't actually get back to it.  Until now.  Tasks in mind:
+	-Store player state (cards in hand, on field, etc.)
+	-Set up game flow from start to end
+	-Make UI decisions for how to implement gameplay
+	
+	PROBLEM: STATE MANAGEMENT
+	I don't actually know how to build an FSM, which I'm assuming is what I need
+	to manage the game state.  
+
+22:05 CDT
+
+Spent some time pen-and-papering flowchart for game state, will implement at a later date
