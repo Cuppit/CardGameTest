@@ -1,0 +1,24 @@
+12:07 CDT
+SA, TX, 78230
+
+Decided to make the main game loop happen within the scene "GameBoard",
+which contains a camera for the player, an instance of a "middle board"
+UI which holds the monsters on the board, and the two decks, and
+additional instances of each player UI.  They will be pre-defined,
+and turned on/off based on how many players are in the game.
+
+...
+
+
+12:18 CDT
+
+After some reflection on the degree of progress, and the lack of vision
+on how to complete the game, and the fact that cards aren't properly
+defined/structured, it may be time to start from scratch with a more
+robust plan.  
+
+IF STOP NOW, WHERE DID EVERYTHING GO WRONG?
+
+lessons learned:
+	-Need clearer vision/stronger understanding of UI elements
+	-

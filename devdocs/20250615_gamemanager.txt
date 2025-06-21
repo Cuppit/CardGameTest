@@ -1,0 +1,20 @@
+15:28 CDT
+
+The game manager holds the state of the game.  For the purposes of this demo,
+there will only be 2 players, one is the actual player, the other is an AI
+"dummy" player that can only make simple decisions.  (eventually; for now will
+simply choose to do nothing every turn.  Player is essentially playing solitare)
+
+...
+
+15:48 CDT
+
+Messed around with an idea of a "Game Board" scene that manages the whole game. 
+Made a simple script demonstrating tying camera positioning to mouse movement.
+
+...
+
+16:06 CDT
+
+Got too satisfied with demoing functionality, lost track of managing game flow,
+or whether it's worth the time right now to work on this.  

@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq7normblqjey"]
+
+[ext_resource type="Script" uid="uid://bmqebu6baegpp" path="res://scripts/game_manager.gd" id="1_3wu0g"]
+[ext_resource type="PackedScene" uid="uid://4s6065i6c1y7" path="res://scenes/cardgamecomponents/player_ui.tscn" id="2_0jtfi"]
+
+[node name="GameBoard" type="Node"]
+script = ExtResource("1_3wu0g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Player1UI" parent="." instance=ExtResource("2_0jtfi")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 3.14159
+metadata/_edit_group_ = true
+
+[node name="Player2UI" parent="." instance=ExtResource("2_0jtfi")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+metadata/_edit_group_ = true
+
+[node name="Player3UI" parent="." instance=ExtResource("2_0jtfi")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_group_ = true
+
+[node name="Player4UI" parent="." instance=ExtResource("2_0jtfi")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+metadata/_edit_group_ = true
